@@ -20,12 +20,13 @@ cdefs:
   IP: 1
   BLE: 0  # Not supported yet
   # This saves quite a bit of space but disables all HAP debug output.
-  # HAP_LOG_LEVEL: 0
+  #HAP_LOG_LEVEL: 0
   HAP_PRODUCT_NAME: '"Acme Light Bulb 9000"'
   HAP_PRODUCT_VENDOR: '"Acme"'
   HAP_PRODUCT_MODEL: '"LB9K"'
   HAP_PRODUCT_HW_REV: '"1.0"'
   HAP_SERVICE_NAME: '"Light Bulb"'
+  HAP_LOG_SENSITIVE: 1
 
 config_schema:
   # Serial number. This can be later set in the field but HomeKit requires at least 2 bytes.
@@ -38,7 +39,9 @@ build_vars:
   MGOS_HAP_SIMPLE_CONFIG: 1
 
 libs:
-  - origin: https://github.com/mongoose-os-libs/homekit-adk
+  - origin: https://github.com/cduvenhorst/homekit-adk.git
+    version: setupPayload
+  - origin: https://github.com/mongoose-os-libs/http-server
   - origin: https://github.com/mongoose-os-libs/rpc-service-config
   - origin: https://github.com/mongoose-os-libs/rpc-uart
 

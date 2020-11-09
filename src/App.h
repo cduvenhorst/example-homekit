@@ -27,32 +27,35 @@ extern "C" {
  * Identify routine. Used to locate the accessory.
  */
 HAP_RESULT_USE_CHECK
-HAPError IdentifyAccessory(HAPAccessoryServerRef *server,
-                           const HAPAccessoryIdentifyRequest *request,
-                           void *_Nullable context);
+HAPError IdentifyAccessory(
+        HAPAccessoryServerRef* server,
+        const HAPAccessoryIdentifyRequest* request,
+        void* _Nullable context);
 
 /**
  * Handle read request to the 'On' characteristic of the Light Bulb service.
  */
 HAP_RESULT_USE_CHECK
-HAPError HandleLightBulbOnRead(HAPAccessoryServerRef *server,
-                               const HAPBoolCharacteristicReadRequest *request,
-                               bool *value, void *_Nullable context);
+HAPError HandleLightBulbOnRead(
+        HAPAccessoryServerRef* server,
+        const HAPBoolCharacteristicReadRequest* request,
+        bool* value,
+        void* _Nullable context);
 
 /**
  * Handle write request to the 'On' characteristic of the Light Bulb service.
  */
 HAP_RESULT_USE_CHECK
 HAPError HandleLightBulbOnWrite(
-    HAPAccessoryServerRef *server,
-    const HAPBoolCharacteristicWriteRequest *request, bool value,
-    void *_Nullable context);
+        HAPAccessoryServerRef* server,
+        const HAPBoolCharacteristicWriteRequest* request,
+        bool value,
+        void* _Nullable context);
 
 /**
  * Initialize the application.
  */
-void AppCreate(HAPAccessoryServerRef *server,
-               HAPPlatformKeyValueStoreRef keyValueStore);
+void AppCreate(HAPAccessoryServerRef* server, HAPPlatformKeyValueStoreRef keyValueStore);
 
 /**
  * Deinitialize the application.
@@ -67,16 +70,14 @@ void AppAccessoryServerStart(void);
 /**
  * Handle the updated state of the Accessory Server.
  */
-void AccessoryServerHandleUpdatedState(HAPAccessoryServerRef *server,
-                                       void *_Nullable context);
+void AccessoryServerHandleUpdatedState(HAPAccessoryServerRef* server, void* _Nullable context);
 
-void AccessoryServerHandleSessionAccept(HAPAccessoryServerRef *server,
-                                        HAPSessionRef *session,
-                                        void *_Nullable context);
+void AccessoryServerHandleSessionAccept(HAPAccessoryServerRef* server, HAPSessionRef* session, void* _Nullable context);
 
-void AccessoryServerHandleSessionInvalidate(HAPAccessoryServerRef *server,
-                                            HAPSessionRef *session,
-                                            void *_Nullable context);
+void AccessoryServerHandleSessionInvalidate(
+        HAPAccessoryServerRef* server,
+        HAPSessionRef* session,
+        void* _Nullable context);
 
 /**
  * Restore platform specific factory settings.
@@ -86,7 +87,7 @@ void RestorePlatformFactorySettings(void);
 /**
  * Returns pointer to accessory information
  */
-HAPAccessory *AppGetAccessoryInfo();
+HAPAccessory* AppGetAccessoryInfo();
 
 #if __has_feature(nullability)
 #pragma clang assume_nonnull end

@@ -35,20 +35,20 @@ static const HAPDataCharacteristic lightBulbServiceSignatureCharacteristic = {
     .characteristicType = &kHAPCharacteristicType_ServiceSignature,
     .debugDescription = kHAPCharacteristicDebugDescription_ServiceSignature,
     .manufacturerDescription = NULL,
-    .properties = {.readable = true,
-                   .writable = false,
-                   .supportsEventNotification = false,
-                   .hidden = false,
-                   .requiresTimedWrite = false,
-                   .supportsAuthorizationData = false,
-                   .ip = {.controlPoint = true},
-                   .ble = {.supportsBroadcastNotification = false,
-                           .supportsDisconnectedNotification = false,
-                           .readableWithoutSecurity = false,
-                           .writableWithoutSecurity = false}},
-    .constraints = {.maxLength = 2097152},
-    .callbacks = {.handleRead = HAPHandleServiceSignatureRead,
-                  .handleWrite = NULL}};
+    .properties = { .readable = true,
+                    .writable = false,
+                    .supportsEventNotification = false,
+                    .hidden = false,
+                    .requiresTimedWrite = false,
+                    .supportsAuthorizationData = false,
+                    .ip = { .controlPoint = true },
+                    .ble = { .supportsBroadcastNotification = false,
+                             .supportsDisconnectedNotification = false,
+                             .readableWithoutSecurity = false,
+                             .writableWithoutSecurity = false } },
+    .constraints = { .maxLength = 2097152 },
+    .callbacks = { .handleRead = HAPHandleServiceSignatureRead, .handleWrite = NULL }
+};
 
 /**
  * The 'Name' characteristic of the Light Bulb service.
@@ -59,20 +59,20 @@ static const HAPStringCharacteristic lightBulbNameCharacteristic = {
     .characteristicType = &kHAPCharacteristicType_Name,
     .debugDescription = kHAPCharacteristicDebugDescription_Name,
     .manufacturerDescription = NULL,
-    .properties = {.readable = true,
-                   .writable = false,
-                   .supportsEventNotification = false,
-                   .hidden = false,
-                   .requiresTimedWrite = false,
-                   .supportsAuthorizationData = false,
-                   .ip = {.controlPoint = false,
-                          .supportsWriteResponse = false},
-                   .ble = {.supportsBroadcastNotification = false,
-                           .supportsDisconnectedNotification = false,
-                           .readableWithoutSecurity = false,
-                           .writableWithoutSecurity = false}},
-    .constraints = {.maxLength = 64},
-    .callbacks = {.handleRead = HAPHandleNameRead, .handleWrite = NULL}};
+    .properties = { .readable = true,
+                    .writable = false,
+                    .supportsEventNotification = false,
+                    .hidden = false,
+                    .requiresTimedWrite = false,
+                    .supportsAuthorizationData = false,
+                    .ip = { .controlPoint = false, .supportsWriteResponse = false },
+                    .ble = { .supportsBroadcastNotification = false,
+                             .supportsDisconnectedNotification = false,
+                             .readableWithoutSecurity = false,
+                             .writableWithoutSecurity = false } },
+    .constraints = { .maxLength = 64 },
+    .callbacks = { .handleRead = HAPHandleNameRead, .handleWrite = NULL }
+};
 
 /**
  * The 'On' characteristic of the Light Bulb service.
@@ -83,20 +83,19 @@ const HAPBoolCharacteristic lightBulbOnCharacteristic = {
     .characteristicType = &kHAPCharacteristicType_On,
     .debugDescription = kHAPCharacteristicDebugDescription_On,
     .manufacturerDescription = NULL,
-    .properties = {.readable = true,
-                   .writable = true,
-                   .supportsEventNotification = true,
-                   .hidden = false,
-                   .requiresTimedWrite = false,
-                   .supportsAuthorizationData = false,
-                   .ip = {.controlPoint = false,
-                          .supportsWriteResponse = false},
-                   .ble = {.supportsBroadcastNotification = true,
-                           .supportsDisconnectedNotification = true,
-                           .readableWithoutSecurity = false,
-                           .writableWithoutSecurity = false}},
-    .callbacks = {.handleRead = HandleLightBulbOnRead,
-                  .handleWrite = HandleLightBulbOnWrite}};
+    .properties = { .readable = true,
+                    .writable = true,
+                    .supportsEventNotification = true,
+                    .hidden = false,
+                    .requiresTimedWrite = false,
+                    .supportsAuthorizationData = false,
+                    .ip = { .controlPoint = false, .supportsWriteResponse = false },
+                    .ble = { .supportsBroadcastNotification = true,
+                             .supportsDisconnectedNotification = true,
+                             .readableWithoutSecurity = false,
+                             .writableWithoutSecurity = false } },
+    .callbacks = { .handleRead = HandleLightBulbOnRead, .handleWrite = HandleLightBulbOnWrite }
+};
 
 /**
  * The Light Bulb service that contains the 'On' characteristic.
@@ -105,11 +104,11 @@ HAPService lightBulbService = {
     .iid = kIID_LightBulb,
     .serviceType = &kHAPServiceType_LightBulb,
     .debugDescription = kHAPServiceDebugDescription_LightBulb,
-    .name = NULL,  // Set from config.
-    .properties = {.primaryService = true,
-                   .hidden = false,
-                   .ble = {.supportsConfiguration = false}},
+    .name = NULL, // Set from config.
+    .properties = { .primaryService = true, .hidden = false, .ble = { .supportsConfiguration = false } },
     .linkedServices = NULL,
-    .characteristics = (const HAPCharacteristic *const[]){
-        &lightBulbServiceSignatureCharacteristic, &lightBulbNameCharacteristic,
-        &lightBulbOnCharacteristic, NULL}};
+    .characteristics = (const HAPCharacteristic* const[]) { &lightBulbServiceSignatureCharacteristic,
+                                                            &lightBulbNameCharacteristic,
+                                                            &lightBulbOnCharacteristic,
+                                                            NULL }
+};
